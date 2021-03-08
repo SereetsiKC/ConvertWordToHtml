@@ -1,0 +1,41 @@
+﻿@model ConvertWordToHtml.Models.FileSetting
+
+@{
+    ViewBag.Title = "MammothConverter";
+}
+
+<h2>Mammoth</h2>
+
+
+
+@using (Html.BeginForm("ConvertToHtml", "MammothConverter", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", id = "MammothForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DocumentPath, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="MommothFile" id="MommothFile" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-4">
+            <input type="button" value="Convert Document" id="ConvertMammothDocument" class="btn btn-success btn-lg" />
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+    </div>
+
+}
+<div id="HtmlMommothContents">
+
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            Converter.Mommoth();
+
+        });
+    </script>
+}

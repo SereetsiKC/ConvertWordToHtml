@@ -1,0 +1,40 @@
+﻿@model ConvertWordToHtml.Models.FileSetting
+
+@{
+    ViewBag.Title = "Aspose Words";
+}
+
+<h2>Aspose Words</h2>
+
+
+@using (Html.BeginForm("Convert", "AsposeWords", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", id = "AsposeForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DocumentPath, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="AsposeFile" id="AsposeFile" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-4">
+            <input type="button" value="Convert Document" id="ConvertAsposeDocument" class="btn btn-success btn-lg" />
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+    </div>
+
+}
+<div id="AsposeHtmlContents">
+
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            Converter.Aspose();
+
+        });
+    </script>
+}
